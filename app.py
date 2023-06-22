@@ -172,7 +172,7 @@ def forgot_password():
         if user:
             try:
                 msg = Message('Reset Password', sender="Trimly", recipients=[email])
-                msg.html = f"""
+                msg.body = f"""
                     Hello {user.username},\n
                     we received a request to reset your password\n
                     follow the link below to change your password:\n
