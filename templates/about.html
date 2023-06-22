@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trimly</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='images/site.webmanifest') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+</head>
+<body>
+    <section>
+        <header class="header px-5 lg:max-w-5xl lg:mx-auto xl:max-w-6xl 2xl:px-0 py-5">
+
+            <nav class="flex items-center justify-between py-4">
+                <div class="brand flex font-bold text-slate-800">
+                    <img src="{{ url_for('static', filename='images/favicon.ico') }}" alt="">
+                    <span>Trimly</span>
+                </div>
+                <button id="navbar-toggler" class="navbar-toggler md:hidden">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 5A.75.75 0 012.75 9h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 9.75zm0 5A.75.75 0 012.75 14h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 14.75z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </button>
+                <ul id="navbar-menu" class="navbar-menu hidden md:flex space-x-4 px-6">
+                  <li><a href="{{ url_for('index') }}" class="text-slate-400">Home</a></li>
+                  <li><a href="{{ url_for('about') }}" class="text-slate-400">About</a></li>
+                  <li><a href="{{ url_for('login') }}" class="text-slate-400">Login</a></li>
+                  <li><a href="{{ url_for('signup') }}" class="btn-cta rounded-full">SignUp</a></li>
+                </ul>
+            </nav>
+
+            <section class="py-12">
+                <div class="container mx-auto">
+                    <div class="flex flex-col items-center mb-8">
+                        <h2 class="text-4xl font-bold mb-4">About Trimly</h2>
+                        <p class="text-gray-600 text-lg">Discover the Power of Short Links</p>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center md:justify-between">
+                        <div class="md:w-1/2 mb-8 md:mr-8">
+                        <img src="{{url_for('static', filename='images/about-img.svg')}}" alt="Illustration" class="w-full">
+                        </div>
+
+                        <div class="md:w-1/2">
+                            <p class="mb-4">Trimly is a powerful, free and user-friendly URL shortening service that helps you manage and share your links effectively.</p>
+                            <p class="mb-4">With Trimly, you can:</p>
+                            <ul class="list-disc ml-6">
+                                <li class="mb-2">Create customized short links</li>
+                                <li class="mb-2">Track link performance and analytics</li>
+                                <li class="mb-2">Manage your links in one place</li>
+                                <li class="mb-2">Share links seamlessly with others</li>
+                            </ul>
+                            <p class="mt-8">Join Trimly today and experience the convenience and power of short links!</p>
+                            <a href="{{ url_for('signup') }}" class="mt-4 inline-block bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-2 px-4 rounded">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+              </section>
+
+
+        </header>
+    </section>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'dashboardbase.html' %}
+
+{% block content %}
+
+    <h1 class="text-2xl font-bold mb-4">Create New Link</h1>
+    <form method="POST" class="flex flex-col items-center">
+        {{ form.hidden_tag() }}
+        {{ form.title(class="bg-white rounded-lg py-2 px-4 mb-4 w-full border border-cyan-500", placeholder="Enter a title(optional)") }}
+        {{ form.long_url(class="bg-white rounded-lg py-2 px-4 mb-4 w-full border border-cyan-500", placeholder="Enter long url") }}
+        {{ form.custom_url(class="bg-white rounded-lg py-2 px-4 mb-4 w-full border border-cyan-500", placeholder="Enter a custom url(optional)") }}
+        {{ form.submit(class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded-lg w-1/2", value="Shorten") }}
+    </form>
+
+{% endblock %}

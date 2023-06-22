@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trimly</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='images/site.webmanifest') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="https://kit.fontawesome.com/42e35f7acf.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="bg-cyan-500 bg-opacity-80 text-white py-4 px-6 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <ul>
+            {% for message in messages %}
+                <li class="mb-2">{{ message }}</li>
+            {% endfor %}
+            </ul>
+            <button class="close-button text-white"><i class="fa-solid fa-times"></i></button>
+        </div>
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <div class="brand flex font-bold text-slate-800">
+			<img src="{{ url_for('static', filename='images/favicon.ico') }}" alt="">
+			<span>Trimly</span>
+		</div>
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+</body>
+</html>

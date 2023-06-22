@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "tailwindcss": "^3.3.2"
+  },
+
+  "scripts": {
+    "create-css": "npx tailwindcss -i ./static/src/styles.css -o ./static/css/main.css --watch"
+  }
+}
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trimly</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='images/site.webmanifest') }}">
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="https://kit.fontawesome.com/42e35f7acf.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-gray-200">
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="bg-cyan-500 bg-opacity-80 text-white py-2 px-6 fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto flex items-center justify-between">
+            <ul>
+            {% for message in messages %}
+                <li class="mb-2 font-bold">{{ message }}</li>
+            {% endfor %}
+            </ul>
+            <button class="close-button font-bold text-white"><i class="fa-solid fa-times"></i></button>
+        </div>
+        </div>
+    {% endif %}
+    {% endwith %}
+
+
+    <div class="md:flex">
+        <!-- Sidebar -->
+
+        <div class="hidden md:flex md:flex-col items-center bg-cyan-950 text-white h-screen side" id="sidebar">
+            <div class="flex items-center overflow-hidden mt-8 py-4">
+                <img class="w-6 h-6 icon" src="{{ url_for('static', filename='images/favicon.ico') }}" alt="">
+                <span class="font-bold text-2xl brand">Trimly</span>
+            </div>
+
+            <ul class="space-y-2 navs">
+                <li>
+                    <div class="relative mt-8">
+                        <button class="bg-slate-50 text-slate-900 rounded mb-5 ml-4 text-lg px-4 py-1.5 create hover:bg-gray-100" id="create-new-button"><i class="fa-solid fa-plus"></i>New</button>
+                        <div id="create-new-options" class="absolute right-0 ml-2 w-40 bg-white border border-gray-200 rounded shadow-md hidden">
+                            <a href="{{ url_for('new_link') }}" class="block drop text-gray-800 hover:bg-gray-100"><i class="fa-solid fa-link"></i> Link</a>
+                            <a href="{{ url_for('new_qrcode') }}" class="block drop text-gray-800 hover:bg-gray-100"><i class="fa-solid fa-qrcode"></i> QR Code</a>
+                        </div>
+
+                    </div>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('dashboard') }}"><i class="fa-solid fa-house"></i>Dashboard</a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('links') }}"><i class="fa-solid fa-link"></i>Links</a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('qrcodes') }}"><i class="fa-solid fa-qrcode"></i>QR Codes</a>
+                </li>
+                <li class="list">
+                    <a href="{{ url_for('logout') }}"><i class="fa-solid fa-right-from-bracket"></i>Log Out</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <!-- Main Content -->
+        <div class="main">
+            <div class="md:hidden">
+                <button type="button" class="focus:outline-none my-2 mx-2 toggle-button" id="toggleBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <div class="flex flex-col justify-center items-center h-screen">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+

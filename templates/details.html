@@ -1,0 +1,25 @@
+{% extends 'dashboardbase.html' %}
+
+{% block content %}
+    <div class="bg-white shadow-lg rounded-lg p-4 w-3/4 h-3/4">
+        <div class="md:flex justify-between bg-gray-200 px-4 py-6">
+	        <h1 class="text-2xl font-bold mb-2">{{link.title}}</h1>
+            <div class="flex justify-between">
+                <button><a href="{{url_for('edit_link', id=link.id)}}" class="bg-cyan-600 text-white md:mr-2 rounded px-2">Edit</a></button>
+                <button><a href="{{url_for('del_link', id=link.id)}}" class="bg-cyan-600 text-white rounded px-2">Delete</a></button>
+            </div>
+        </div>
+        <div class="md:flex justify-between px-4 py-6">
+            <h3>Short Link:</h3>
+            <p><i class="fa-solid fa-link"></i>  <a href="{{link.original_url}}" target="_blank" class="text-blue-500 break-all inline-block text-ellipsis sm:max-w-md hover:underline">{{host + link.shortened_url}}</a></p>
+        </div>
+        <div class=" hidden md:flex justify-between bg-gray-200 px-4 py-6 overflow-hidden">
+            <h3>Destination Url:</h3>
+            <p><a href="{{link.original_url}}" target="_blank" class="text-blue-500 break-all inline-block max-w-md hover:underline">{{link.original_url}}</a></p>
+        </div>
+        <div class="px-4 py-6">
+            <p><i class="fa-solid fa-chart-simple"></i>  {{link.clicks}} Total Clicks</p>
+            <p><i class="fa-solid fa-calendar"></i>  Created at: {{ link.created_at.strftime('%I:%M%p %B %d, %Y') }} by {{ current_user.username }}</p>
+        </div>
+    </div>
+{% endblock %}

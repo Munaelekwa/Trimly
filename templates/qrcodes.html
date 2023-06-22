@@ -1,0 +1,36 @@
+{% extends 'dashboardbase.html' %}
+
+{% block content %}
+	<div class="container mx-auto push">
+		<h1 class="mb-10 text-4xl font-bold text-center">QR Codes</h1>
+		{% if qrcodes %}
+			{% for qr in qrcodes %}
+			<div class="grid grid-cols-1 w-3/4 mx-auto max-h-44 mb-6">
+			<!-- Link Card -->
+				<div class="bg-cyan-700 text-white shadow-lg rounded-lg p-4 overflow-hidden md:whitespace-normal whitespace-nowrap">
+					<div class="ml-2 flex justify-between">
+						<h2 class="text-lg font-bold mb-2">{{qr.title}}</h2>
+						<button class="hover:underline"><a href="{{url_for('download_qrcode', id=qr.id)}}">Download</a></button>
+					</div>
+					<div class="ml-2 block md:grid grid-cols-2 gap-3 grid-flow-row">
+						<div class="bg-slate-50 w-6 h-6 md:w-24 md:h-24 border">
+							<img src="{{ url_for('static', filename='images/qr-code.svg') }}" alt="QR Code" class=" w-6 h-6 md:w-24 md:h-24">
+						</div>
+						<p class=""><a href="{{qr.url}}"></a>{{qr.url}}</p>
+					</div>
+					<div class="ml-2 block md:flex justify-between items-center">
+						<p class="text-sm reduce"><i class="fa-solid fa-calendar"></i>  {{ qr.created_at.strftime('%I:%M%p %B %d, %Y') }}</p>
+						<p class="text-sm reduce"><i class="fa-solid fa-chart-simple"></i> {{ qr.scans }} Scans</p>
+						<a href="#" class="text-white hover:underline reduce">View Details</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		{% else %}
+			<div class="flex flex-col items-center justify-center">
+				<h2>You don't have any QR Codes yet!</h2>
+				<p>Hit the 'New' Button to create away 🤨</p>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}
