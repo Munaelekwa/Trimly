@@ -116,6 +116,7 @@ def new_link():
             link.save()
             flash('Link Created Succesfully', 'success')
             return redirect(url_for('links'))
+
     return render_template('createlink.html', form=form)
 
 @app.route('/link<int:id>/edit', methods=['GET', 'POST'])
@@ -172,7 +173,7 @@ def forgot_password():
         if user:
             try:
                 msg = Message('Reset Password', sender="Trimly", recipients=[email])
-                msg.body = f"Hello {user.username},\nwe received a request to reset your password\nfollow the link below to change your password:\n{link}\nYou can ignore this mail if you didn't make the request."
+                msg.body = f"Hello {user.username},\nwe received a request to reset your password \nfollow the link below to change your password: \n{link}\nYou can ignore this mail if you didn't make the request."
                 mail.send(msg)
             except:
                 flash ("Reset password failed. Please try again.")
