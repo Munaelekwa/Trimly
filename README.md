@@ -33,11 +33,11 @@ You can read the documentation of the routes and functionality <a href="https://
 It is believed that you have python installed already. Open CMD or terminal
 1. Clone this repo
 ```sh
-git clone https://github.com/Unique-Red/url_shortner.git
+git clone https://github.com/Munaelekwa/Trimly.git
 ```
 2. Open the directory
 ```sh
-cd url_shortner
+cd Trimly
 ```
 3. Create Virtual Environment
 ```sh
